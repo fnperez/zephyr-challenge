@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 
-interface Product {
+export interface Product {
     id: string
     name: string
     quantity: number
@@ -11,13 +11,16 @@ interface Store {
     addProduct: (product: Product) => void
 }
 
-const useStore = create<Store>((set) => ({
+export const useStore = create<Store>((set) => ({
     products: {},
-    addProduct: (product: Product) => set(state => {
-        state.products[product.id] = product
-
-        return state
-    })
+    addProduct: (product: Product) => set(state => ({
+        ...state,
+        products: {
+            ...state.products,
+            [product.id]: {
+                ...product,
+                quantity: product.quantity + (state.products[product.id]?.quantity || 0)
+            }
+        }
+    }))
 }))
-
-export default useStore

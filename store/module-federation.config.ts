@@ -1,5 +1,18 @@
 export const mfConfig = {
   name: "store",
-  exposes: {},
-  shared: ["react", "react-dom"],
+  filename: 'remoteEntry.js',
+  exposes: {
+    '.': './src/store'
+  },
+   shared: {
+    react: {
+      singleton: true,
+    },
+    'react-dom': {
+      singleton: true,
+    },
+    zustand: {
+      singleton: true
+    }
+  },
 };

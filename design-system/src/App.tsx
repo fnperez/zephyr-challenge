@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 
-import { Button } from "./ui/button";
-import Input from "./ui/input";
+import { Button, Input } from "./ui";
 
 import "./index.css";
 

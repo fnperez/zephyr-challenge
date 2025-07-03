@@ -51,13 +51,13 @@ const VARIANT_HASH: Record<ButtonProps['variant'], string> = {
     ),
 }
 
-export const Button = ({ variant, size, right, label, left}: ButtonProps) => (
+export const Button = ({ variant, size, right, label, left, ...props}: ButtonProps) => (
     <button className={classNames(
-        "flex gap-2 rounded-xl text-",
+        "flex gap-2 rounded-xl items-center justify-center",
         VARIANT_HASH[variant],
         SIZE_HASH[size],
         typography.button[size]
-    )}>
+    )} {...props}>
         {left}
         {label}
         {right}
